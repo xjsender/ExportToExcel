@@ -1,0 +1,17 @@
+<apex:page controller="ExportListViewToExcelController" readOnly="true" 
+    action="{!fetchListviewRecords}" contentType="application/vnd.ms-excel#{!fileName}.xls">
+    <table border="1">
+        <tr>
+            <apex:repeat value="{!wrapper.columnNames}" var="colName">
+                <td>{!colName} </td>
+            </apex:repeat>  
+        </tr>
+        <apex:repeat value="{!wrapper.allRecords}" var="record">
+            <tr>
+                <apex:repeat value="{!wrapper.fields}" var="fieldName">
+                   <td>{!NULLVALUE(record[fieldName], "")}</td>
+                </apex:repeat>
+            </tr>
+        </apex:repeat>
+    </table>
+</apex:page>
