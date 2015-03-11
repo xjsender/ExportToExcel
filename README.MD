@@ -8,4 +8,5 @@ I found a ExportToExcel App in Salesforce AppExchange, however it is not open so
 </a>
 
 # Notes
+* This package is based on <a href="https://github.com/Karanraj/ExportfromListView" />
 * In order to make sure it works, after deployed, you should update the ListViewRest remote site to your instance
