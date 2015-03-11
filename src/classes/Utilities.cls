@@ -2,7 +2,7 @@ public class Utilities {
     public class ListViewWrapper {
         public List<String> fields {get; set;}
         public List<String> columnNames {get; set;}
-        public List<Sobject> allRecords {get; set;}
+        public List<List<Sobject>> allRecords {get; set;}
 
         private String objectName;
         private String listId;
@@ -13,7 +13,7 @@ public class Utilities {
 
             fields = new List<String>();
             columnNames = new List<String>();
-            allRecords = new List<Sobject>();
+            allRecords = new List<List<Sobject>>();
         }
 
         public void fetchListViewDetail() {
@@ -36,9 +36,17 @@ public class Utilities {
             Map<String,Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());
 
             // Nested list logic to overcome collection limit
-            for (Sobject sobj : Database.query((String)root.get('query'))){
-                if (allRecords.size() == 10000) break;
-                allRecords.add(sobj);
+            List<Sobject> recordList = new List<Sobject>();
+            for(Sobject sobj : Database.query((String)root.get('query'))){
+                recordList.add(sobj);
+                if (recordList.size() == 10000) {
+                    allRecords.add(recordList);
+                    recordList = new List<sObject>();
+                }
+             }
+             
+            if (!recordList.isEmpty()) {
+                allRecords.add(recordList);
             }
             
             // Parsing JSON string to get the column details

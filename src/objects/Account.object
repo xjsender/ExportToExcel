@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <searchLayouts>
+        <listViewButtons>Export_To_Excel</listViewButtons>
+    </searchLayouts>
     <webLinks>
         <fullName>Export_To_Excel</fullName>
         <availability>online</availability>

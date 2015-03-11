@@ -4,14 +4,17 @@
         <tr>
             <apex:repeat value="{!wrapper.columnNames}" var="colName">
                 <td>{!colName} </td>
-            </apex:repeat>  
+            </apex:repeat>
         </tr>
-        <apex:repeat value="{!wrapper.allRecords}" var="record">
-            <tr>
-                <apex:repeat value="{!wrapper.fields}" var="fieldName">
-                   <td>{!NULLVALUE(record[fieldName], "")}</td>
-                </apex:repeat>
-            </tr>
+
+        <apex:repeat value="{!wrapper.allRecords}" var="records">
+            <apex:repeat value="{!records}" var="rec"> 
+                <tr>
+                    <apex:repeat value="{!wrapper.fields}" var="fieldName">
+                       <td>{!NULLVALUE(rec[fieldName], "")}</td>      
+                    </apex:repeat>
+                </tr>
+            </apex:repeat>
         </apex:repeat>
     </table>
 </apex:page>

@@ -2,5 +2,5 @@
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <disableProtocolSecurity>false</disableProtocolSecurity>
     <isActive>true</isActive>
-    <url>https://c.cs16.visual.force.com</url>
+    <url>https://c.ap1.visual.force.com</url>
 </RemoteSiteSetting>
